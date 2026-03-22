@@ -14,8 +14,9 @@ public class FlightController : MonoBehaviour
     [SerializeField] private float minTakeoffSpeed   = 10f;   
     [SerializeField] private float acceleration = 5f;
     [SerializeField] private float currentSpeed = 0f;
-    [SerializeField] private float glideGravity = 2f;
+    [SerializeField] private float glideGravity = 30f;
     private Rigidbody rb; // Task 3-A 
+    private bool isGrounded;
  
     void Start() 
     { 
@@ -54,11 +55,6 @@ public class FlightController : MonoBehaviour
     // in Unity Tutorial there is a code block for camera also that includes LateUpdate() but  I have combined camera and aircraft in a 
     // parent class and fixed the distance between aircraft and camera , In Tutorial, there are some vibrations when we do not use the 
     // LateUpdate(), but the way I have used works well, It seems that we do not need LateUpdate() 
-    
-
-
-
-   
  
     } 
  
@@ -77,12 +73,23 @@ public class FlightController : MonoBehaviour
     } 
     private void ApplyGlide ()
     {
-      if(currentSpeed < minTakeoffSpeed)
-      { 
-      	float gravityFactor  = 1f -(currentSpeed /minTakeoffSpeed);
-        transform.Translate(Vector3.down * glideGravity *gravityFactor*Time.deltaTime, Space.World);
+     
+     if (currentSpeed < minTakeoffSpeed)
+        {
+            float factor = 1f - (currentSpeed / minTakeoffSpeed);
 
-       }     
+
+            if (transform.position.y > 0.5f)
+            {
+                transform.Translate(Vector3.down * glideGravity * factor * Time.deltaTime, Space.World);
+            }
+            else
+            {
+                Vector3 pos = transform.position;
+                pos.y = 0.5f; 
+                transform.position = pos;
+            }
+        }  
 
 
 
