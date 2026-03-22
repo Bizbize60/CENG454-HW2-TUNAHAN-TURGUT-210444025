@@ -4,12 +4,16 @@
  
 using UnityEngine; 
 //TO-DO: do not forget the select gravity , I have unboxed it , find the relevant file  git add . does not work.
+//DONE: Did not select gravity
 public class FlightController : MonoBehaviour 
 { 
     [SerializeField] private float pitchSpeed  = 45f;  // degrees/second 
     [SerializeField] private float yawSpeed    = 45f;  // degrees/second 
     [SerializeField] private float rollSpeed   = 45f;  // degrees/second 
-    [SerializeField] private float thrustSpeed = 5f;   // units/second 
+    [SerializeField] private float thrustSpeed = 200f;   // units/second 
+    [SerializeField] private float minTakeoffSpeed   = 10f;   
+    [SerializeField] private float acceleration = 5f;
+    [SerializeField] private float currentSpeed = 0f;
  
     private Rigidbody rb; // Task 3-A 
  
@@ -28,13 +32,16 @@ public class FlightController : MonoBehaviour
     private void HandleRotation() 
     { 
      // 3-C
+
+
+    float yawInput = Input.GetAxis("Horizontal");
+    transform.Rotate(Vector3.up, yawInput * yawSpeed * Time.deltaTime);
+    if (currentSpeed < minTakeoffSpeed) return;
+
     float pitchInput = Input.GetAxis("Vertical"); 
      // to rotate it up and down we use x-axis rather than  y-axis , I haven't exactly understood the math behind it,
      // to make  it turn  left and right  we use y-axis rathen than x-axis ???  they are reverse of each other  
     transform.Rotate(Vector3.right, -pitchInput * pitchSpeed * Time.deltaTime);
-
-    float yawInput = Input.GetAxis("Horizontal");
-    transform.Rotate(Vector3.up, yawInput * yawSpeed * Time.deltaTime);
 
     //rotation 
     float rollInput = 0f;
@@ -56,6 +63,15 @@ public class FlightController : MonoBehaviour
  
     private void HandleThrust() 
     { 
-        // TODO (Task 3-D): 
+       if (Input.GetKey(KeyCode.Space)) 
+    { 
+        currentSpeed = Mathf.MoveTowards(currentSpeed, thrustSpeed, acceleration * Time.deltaTime);
+    } 
+    else 
+    {
+        currentSpeed = Mathf.MoveTowards(currentSpeed, 0f, (acceleration / 2f) * Time.deltaTime);
+    }
+    
+    transform.Translate(Vector3.forward * currentSpeed * Time.deltaTime,Space.Self);
     } 
 }
