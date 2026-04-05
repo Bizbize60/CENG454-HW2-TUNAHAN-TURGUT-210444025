@@ -4,14 +4,15 @@ using UnityEngine;
 public class MissileLauncher : MonoBehaviour 
 { 
 [SerializeField] private GameObject missilePrefab; 
-[SerializeField] private Transform launchPoint; 
+[SerializeField] private Transform jet; 
     [SerializeField] private AudioSource launchAudioSource; 
  
     private GameObject activeMissile; 
  
     public GameObject Launch(Transform target) 
     { 
-        // TODO (Task 3-A): instantiate the missile at launchPoint 
+        // (Task 3-A): instantiate the missile at launchPoint 
+	ActiveMissile = Instantiate(missilePrefab, transform.position, transform.rotation);
         // TODO (Task 3-B): give the missile its target 
         // TODO (Task 3-C): play launch audio and return the spawned missile 
         return null; 
