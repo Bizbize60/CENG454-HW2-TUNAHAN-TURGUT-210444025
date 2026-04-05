@@ -7,7 +7,7 @@ public class MissileLauncher : MonoBehaviour
 [SerializeField] private Transform jet; 
 [SerializeField] private AudioSource launchAudioSource; 
  
-    private GameObject activeMissile; 
+    private GameObject ActiveMissile; 
  
     public GameObject Launch(Transform target) 
     { 
@@ -32,5 +32,11 @@ public class MissileLauncher : MonoBehaviour
     public void DestroyActiveMissile() 
     { 
         // TODO (Task 3-D): destroy the current missile safely if one exists 
+	if(ActiveMissile != null)
+	{
+	  Destroy(ActiveMissile);
+	  ActiveMissile = null;  // habit from c++ do not trust Destroy() function
+	}
+
     } 
 }
