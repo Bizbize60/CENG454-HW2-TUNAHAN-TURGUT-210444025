@@ -15,6 +15,10 @@ public class MissileHoming : MonoBehaviour
     void Update() 
     { 
         // TODO (Task 3-F): rotate toward the target and move forward 
+	if (target == null) 
+        {
+        return; 
+        }
 	moveToJet();
 	rotateToJet();
     } 
