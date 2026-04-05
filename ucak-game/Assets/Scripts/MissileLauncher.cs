@@ -15,6 +15,17 @@ public class MissileLauncher : MonoBehaviour
 	ActiveMissile = Instantiate(missilePrefab, transform.position, transform.rotation);
         
 	MissileHoming missilehoming = ActiveMissile.GetComponent<MissileHoming>();
+	
+        if (homingScript != null) 
+        {
+           homingScript.SetTarget(target); 
+        }
+      // Task 3-B and Task 3-C
+   
+       if (launchAudioSource != null) 
+       {
+          launchAudioSource.Play();
+       }
 
     } 
  
