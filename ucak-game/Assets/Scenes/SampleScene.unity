@@ -246,8 +246,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.11046876, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.90900004}
-  m_AnchoredPosition: {x: -334.6916, y: 271.47552}
-  m_SizeDelta: {x: -382.8937, y: -475.5234}
+  m_AnchoredPosition: {x: -290.3155, y: 269.6264}
+  m_SizeDelta: {x: -116.6357, y: -471.8253}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &84292868
 MonoBehaviour:
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tunahan
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1233,6 +1233,7 @@ GameObject:
   - component: {fileID: 1330875846}
   - component: {fileID: 1330875845}
   - component: {fileID: 1330875848}
+  - component: {fileID: 1330875849}
   m_Layer: 0
   m_Name: DangerZone
   m_TagString: Dangerzone
@@ -1385,6 +1386,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d70b6d76ad21e4c86e709203acbe7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlaySound
+--- !u!114 &1330875849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330875844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ea59d943fd9e0a4ea5a8e9fbfb72a2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HUD
+  warningMyText: {fileID: 84292868}
+  enterMessage: Entered dangerous zone!
+  exitMessage: 
+  canvas: {fileID: 2085892368}
 --- !u!1 &1559378030
 GameObject:
   m_ObjectHideFlags: 0
@@ -1695,6 +1712,7 @@ GameObject:
   - component: {fileID: 2085892365}
   - component: {fileID: 2085892364}
   - component: {fileID: 2085892363}
+  - component: {fileID: 2085892368}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1794,6 +1812,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!225 &2085892368
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085892362}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
