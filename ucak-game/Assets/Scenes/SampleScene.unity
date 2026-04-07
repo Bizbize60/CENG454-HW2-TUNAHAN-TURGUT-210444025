@@ -1404,6 +1404,7 @@ MonoBehaviour:
   canvas: {fileID: 2085892368}
   jet: {fileID: 1820889308}
   tank: {fileID: 1568868606}
+  ActiveMissile: {fileID: 0}
 --- !u!1 &1559378030
 GameObject:
   m_ObjectHideFlags: 0
@@ -1580,6 +1581,7 @@ MonoBehaviour:
   missilePrefab: {fileID: 5493336601460117381, guid: 70eec7a43e58335459b43b80f4e3e917, type: 3}
   jet: {fileID: 1820889308}
   launchAudioSource: {fileID: 1568868609}
+  radarsystem: {fileID: 1330875849}
 --- !u!82 &1568868609
 AudioSource:
   m_ObjectHideFlags: 0

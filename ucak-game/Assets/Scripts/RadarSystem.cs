@@ -12,6 +12,7 @@ public class RadarSystem : MonoBehaviour
  
     private bool isInside= false;
     private float timer = 0f;
+    private GameObject ActiveMissile;
  
 void Update()
 {
@@ -55,6 +56,13 @@ void Update()
             SetCanvasOpacity(0.0f);
             warningMyText.text = exitMessage;
             isInside = false;
+	    timer = 0f;
+	    if(ActiveMissile != null)
+           {
+              Destroy(ActiveMissile);
+	      ActiveMissile = null;
+
+             }
         }
     }
  
@@ -65,4 +73,8 @@ void Update()
             canvas.alpha = alphaValue;
         }
     }
+  public void getMissile(GameObject Missile){
+    ActiveMissile = Missile;
+
+}
 }

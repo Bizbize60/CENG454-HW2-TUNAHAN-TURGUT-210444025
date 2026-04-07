@@ -82,4 +82,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MissileHoming
   moveSpeed: 20
-  turnSpeed: 5
+  turnSpeed: 1000
