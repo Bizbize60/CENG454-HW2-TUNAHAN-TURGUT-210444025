@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
- 
+using UnityEngine.SceneManagement; 
+using System.Collections;
 public class RadarSystem : MonoBehaviour
 {
     [SerializeField] private TMP_Text warningMyText;
@@ -77,4 +78,16 @@ void Update()
     ActiveMissile = Missile;
 
 }
+
+public void StartRestartProcess()
+    {
+        StartCoroutine(WaitAndRestart());
+    }
+
+    private IEnumerator WaitAndRestart()
+    {
+        
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
