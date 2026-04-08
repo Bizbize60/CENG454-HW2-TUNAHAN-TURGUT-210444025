@@ -5,10 +5,15 @@ public class MissileHoming : MonoBehaviour
     [SerializeField] private float moveSpeed = 20f; 
     [SerializeField] private float turnSpeed = 5f; 
     private Transform target; 
+    private RadarSystem radar;
     public TMP_Text mission_failed;
     public void SetTarget(Transform newTarget) 
     { 
         target = newTarget;
+    } 
+
+    public void SetRadarReference(RadarSystem radarRef) {
+    radar = radarRef;
     } 
  
     void Update() 
@@ -46,6 +51,12 @@ public class MissileHoming : MonoBehaviour
   
    SetTextOpacity(1.0f);
    mission_failed.text = "                         Mission Failed!";
+   if (radar != null)
+    {
+        radar.StartRestartProcess(); 
+    }
+
+   Destroy(gameObject);
 
  }
 

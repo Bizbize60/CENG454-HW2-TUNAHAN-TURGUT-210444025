@@ -24,6 +24,7 @@ public class MissileLauncher : MonoBehaviour
         {
            homingScript.SetTarget(target); 
 	   homingScript.SetTextReference(MissionFailedText);
+	   homingScript.SetRadarReference(radarsystem);
         }
       // Task 3-B and Task 3-C
    
