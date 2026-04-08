@@ -14,6 +14,11 @@ public class RadarSystem : MonoBehaviour
     private bool isInside= false;
     private float timer = 0f;
     private GameObject ActiveMissile;
+
+    private bool hasEnteredDangerZone = false;
+    private bool hasExitedDangerZone = false;
+    private bool missionFailed = false;
+    private bool missionCompleted = false;
  
 void Update()
 {
@@ -43,6 +48,7 @@ void Update()
             SetCanvasOpacity(1.0f);
             warningMyText.text = enterMessage;
             isInside = true;
+            hasEnteredDangerZone = true;
         }
     }
  
@@ -64,9 +70,17 @@ void Update()
 	      ActiveMissile = null;
 
              }
+          if (!missionFailed)
+            {
+               hasExitedDangerZone = true;  
+            }
         }
     }
- 
+    public void SetMissionFailed()
+    {
+        missionFailed = true;
+    }
+
     private void SetCanvasOpacity(float alphaValue)
     {
         if (canvas != null)
