@@ -14,7 +14,14 @@ public class RadarSystem : MonoBehaviour
     private bool isInside= false;
     private float timer = 0f;
     private GameObject ActiveMissile;
+
+    private bool hasEnteredDangerZone = false;
+    private bool hasExitedDangerZone = false;
+    private bool missionFailed = false;
+    private bool missionCompleted = false;
+    
  
+
 void Update()
 {
     if (isInside)
@@ -43,6 +50,7 @@ void Update()
             SetCanvasOpacity(1.0f);
             warningMyText.text = enterMessage;
             isInside = true;
+            hasEnteredDangerZone = true;
         }
     }
  
@@ -64,9 +72,17 @@ void Update()
 	      ActiveMissile = null;
 
              }
+          if (!missionFailed)
+            {
+               hasExitedDangerZone = true;  
+            }
         }
     }
- 
+    public void SetMissionFailed()
+    {
+        missionFailed = true;
+    }
+
     private void SetCanvasOpacity(float alphaValue)
     {
         if (canvas != null)
@@ -78,7 +94,27 @@ void Update()
     ActiveMissile = Missile;
 
 }
+   public bool CompleteMission()
+    {
 
+       return hasEnteredDangerZone && hasExitedDangerZone && !missionFailed && !missionCompleted;
+    }
+    public void StartSuccessProcess(TMP_Text successText, string message)
+    {
+        if (missionCompleted)
+            return;
+ 
+        missionCompleted = true;
+ 
+        if (successText != null)
+        {
+            successText.text = message;
+            SetCanvasOpacity(1.0f);
+            
+        }
+ 
+        StartCoroutine(WaitAndRestart());
+    }
 public void StartRestartProcess()
     {
         StartCoroutine(WaitAndRestart());
