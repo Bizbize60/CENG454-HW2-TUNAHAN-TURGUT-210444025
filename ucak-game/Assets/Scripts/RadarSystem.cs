@@ -19,7 +19,9 @@ public class RadarSystem : MonoBehaviour
     private bool hasExitedDangerZone = false;
     private bool missionFailed = false;
     private bool missionCompleted = false;
+    
  
+
 void Update()
 {
     if (isInside)
@@ -107,6 +109,8 @@ void Update()
         if (successText != null)
         {
             successText.text = message;
+            SetCanvasOpacity(1.0f);
+            
         }
  
         StartCoroutine(WaitAndRestart());

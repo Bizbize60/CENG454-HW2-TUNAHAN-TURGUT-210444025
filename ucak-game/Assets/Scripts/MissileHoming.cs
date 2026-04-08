@@ -6,7 +6,15 @@ public class MissileHoming : MonoBehaviour
     [SerializeField] private float turnSpeed = 5f; 
     private Transform target; 
     private RadarSystem radar;
+    private AudioSource failedsound;
     public TMP_Text mission_failed;
+
+     void Start()
+    {
+        
+        failedsound = GetComponent<AudioSource>();
+    }
+
     public void SetTarget(Transform newTarget) 
     { 
         target = newTarget;
@@ -52,7 +60,9 @@ public class MissileHoming : MonoBehaviour
    SetTextOpacity(1.0f);
    mission_failed.text = "                         Mission Failed!";
    if (radar != null)
-    {
+    {   
+        failedsound.Play();
+        radar.SetMissionFailed();
         radar.StartRestartProcess(); 
     }
 
