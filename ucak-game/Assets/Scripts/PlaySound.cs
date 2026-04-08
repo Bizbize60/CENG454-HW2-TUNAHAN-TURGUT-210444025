@@ -22,5 +22,9 @@ public class PlaySound : MonoBehaviour
  
     } 
 
+    void OnTriggerExit(Collider other)
+    {
+        source.Stop();
+    }
 
 }
