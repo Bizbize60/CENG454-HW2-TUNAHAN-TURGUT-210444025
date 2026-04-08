@@ -15,7 +15,7 @@ public class LandingDetect : MonoBehaviour
         if (manager == null)
             return;
  
-        if (manager.CanCompleteMission())
+        if (manager.CompleteMission())
         {
             manager.StartSuccessProcess(SuccessfulText, SuccessfulMessage);
         }

@@ -92,7 +92,25 @@ void Update()
     ActiveMissile = Missile;
 
 }
+   public bool CompleteMission()
+    {
 
+       return hasEnteredDangerZone && hasExitedDangerZone && !missionFailed && !missionCompleted;
+    }
+    public void StartSuccessProcess(TMP_Text successText, string message)
+    {
+        if (missionCompleted)
+            return;
+ 
+        missionCompleted = true;
+ 
+        if (successText != null)
+        {
+            successText.text = message;
+        }
+ 
+        StartCoroutine(WaitAndRestart());
+    }
 public void StartRestartProcess()
     {
         StartCoroutine(WaitAndRestart());
