@@ -1,12 +1,15 @@
 // CENG 454 - HW2 Midterm: Sky-High Prototype II 
 // Author: TUNAHAN TURGUT | Student ID: 210444025 
 using UnityEngine; 
+using TMPro;
 public class MissileLauncher : MonoBehaviour 
 { 
 [SerializeField] private GameObject missilePrefab; 
 [SerializeField] private Transform jet; 
 [SerializeField] private AudioSource launchAudioSource; 
 [SerializeField] private RadarSystem radarsystem;
+[SerializeField] private TMP_Text MissionFailedText;
+
 
     private GameObject ActiveMissile; 
  
@@ -20,6 +23,8 @@ public class MissileLauncher : MonoBehaviour
         if (homingScript != null) 
         {
            homingScript.SetTarget(target); 
+	   homingScript.SetTextReference(MissionFailedText);
+	   homingScript.SetRadarReference(radarsystem);
         }
       // Task 3-B and Task 3-C
    
